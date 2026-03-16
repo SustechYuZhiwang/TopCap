@@ -60,7 +60,7 @@ We build 2 state-of-the-art comparison models that leverage mel-frequency cepstr
 
 ## STFT-based speech classification models
 
-We bulid a comparative model that utilizes the Short-Time Fourier Transform (STFT) and a Convolutional Neural Network (CNN) for implementation. Based on resizing the spectrograms to two different dimensions (one 8*8 and the other 16*16), the work is divided into two experiments. The model is implemented using TensorFlow and aims to distinguish between two classes (i.e., voiced vs. voiceless consonants) based on STFT features. The model implementation includes a complete pipeline from data loading and STFT feature extraction to model training and evaluation. 
+We bulid a comparative model that utilizes the Short-Time Fourier Transform (STFT) and a Convolutional Neural Network (CNN) for implementation. Based on resizing the spectrograms to two different dimensions (one $16 \times 16$ and the other $8 \times 8$), the work is divided into two experiments. The model is implemented using TensorFlow and aims to distinguish between two classes (i.e., voiced vs. voiceless consonants) based on STFT features. The model implementation includes a complete pipeline from data loading and STFT feature extraction to model training and evaluation. 
 
 [`STFT–CNN.py`](STFT–CNN.py) realises this model as follows.
 
@@ -71,7 +71,7 @@ We bulid a comparative model that utilizes the Short-Time Fourier Transform (STF
 - Feature Extraction (STFT Spectrogram Generation)
   - Applies the Short-Time Fourier Transform (STFT) to audio waveforms and computes their magnitude to generate spectrograms.
   - Adds a channel dimension to the spectrograms, making them compatible with convolutional layer input format (batch_size, height, width, channels).
-  - Resizes the spectrograms to a fixed dimension.​ According to the experimental setup, spectrograms are uniformly resized to $16 \times 16$ pixels for the STFT-CNN⁺ experiment; for the other experiment (STFT-CNN), they are resized to 8x8 pixels.
+  - Resizes the spectrograms to a fixed dimension.​ According to the experimental setup, spectrograms are uniformly resized to $16 \times 16$ pixels for the STFT-CNN⁺ experiment; for the other experiment (STFT-CNN), they are resized to $8 \times 8$ pixels.
 
 - CNN Classifier Architecture
   - The model adopts a Sequential structure.
