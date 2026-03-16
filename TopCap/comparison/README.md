@@ -71,7 +71,7 @@ We bulid a comparative model that utilizes the Short-Time Fourier Transform (STF
 - Feature Extraction (STFT Spectrogram Generation)
   - Applies the Short-Time Fourier Transform (STFT) to audio waveforms and computes their magnitude to generate spectrograms.
   - Adds a channel dimension to the spectrograms, making them compatible with convolutional layer input format (batch_size, height, width, channels).
-  - Resizes the spectrograms to a fixed dimension.​ According to the experimental setup, spectrograms are uniformly resized to 16x16 pixels for the STFT-CNN⁺ experiment; for the other experiment (STFT-CNN), they are resized to 8x8 pixels.
+  - Resizes the spectrograms to a fixed dimension.​ According to the experimental setup, spectrograms are uniformly resized to $16 \times 16$ pixels for the STFT-CNN⁺ experiment; for the other experiment (STFT-CNN), they are resized to 8x8 pixels.
 
 - CNN Classifier Architecture
   - The model adopts a Sequential structure.
