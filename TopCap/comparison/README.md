@@ -58,6 +58,31 @@ We build 2 state-of-the-art comparison models that leverage mel-frequency cepstr
   - Training progress (loss and accuracy) is printed periodically.  
   - Evaluates model performance on the test set and displays training progress graphs.  
 
+## STFT-based speech classification models
+
+We bulid a comparative model that utilizes the Short-Time Fourier Transform (STFT) and a Convolutional Neural Network (CNN) for implementation. Based on resizing the spectrograms to two different dimensions (one 8*8 and the other 16*16), the work is divided into two experiments. The model is implemented using TensorFlow and aims to distinguish between two classes (i.e., voiced vs. voiceless consonants) based on STFT features. The model implementation includes a complete pipeline from data loading and STFT feature extraction to model training and evaluation. 
+
+['STFT-CNN.py'](STFT-CNN.py) implements this model as follows.
+
+- Data Loading & Dataset Partitioning
+  - Loads speech files (.wav format) from a specified directory using 'tf.keras.utils.audio_dataset_from_directory'. 
+  - Partitions the samples into training, validation, and test sets in an 8:1:1 ratio, followed by batching. 
+
+- Feature Extraction (STFT Spectrogram Generation)
+  - Applies the Short-Time Fourier Transform (STFT) to audio waveforms and computes their magnitude to generate spectrograms.
+  - Adds a channel dimension to the spectrograms, making them compatible with convolutional layer input format (batch_size, height, width, channels).
+  - Resizes the spectrograms to a fixed dimension.​ According to the experimental setup, spectrograms are uniformly resized to 16x16 pixels for the STFT-CNN⁺ experiment; for the other experiment (STFT-CNN), they are resized to 8x8 pixels.
+
+- CNN Classifier Architecture
+  - The model adopts a Sequential structure.
+  - It consists of three convolutional blocks, each comprising a Conv2D layer (using ReLU activation and samepadding) followed by a MaxPooling2D layer, with the number of filters increasing progressively across blocks (64, 128, 256).
+  - After the convolutional layers, a Flatten layer and two fully connected (Dense) layers are added. A final Sigmoid activation function outputs a single probability value for binary classification (unvoiced vs. voiced consonants).
+    
+- Training and Evaluation
+  - The model is compiled using the Adam optimizer and binary cross-entropy loss function.
+  - It is trained on the training set for 10 epochs, with performance monitored on the validation set.
+  - The loss and accuracy metrics recorded during training can be accessed via the history object.
+
 Running the above codes requires: 
 
 - Python version: Python 3.x 
@@ -65,15 +90,12 @@ Running the above codes requires:
   - Librosa 
   - Matplotlib 
   - NumPy 
-  - PyTorch 
+  - PyTorch
+  - Tensorflow
   - Scikit-learn 
 
 Install the required packages using pip: 
 
 ```bash
-pip install torch librosa numpy matplotlib scikit-learn
+pip install torch tensorflow librosa numpy matplotlib scikit-learn
 ```
-
-## STFT-based speech classification models
-
-The [`STFT–CNN`](STFT–CNN) directory contains 2 convolutional neural network (CNN) comparison models based on short-time Fourier transform (STFT) features.  
