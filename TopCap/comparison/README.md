@@ -91,7 +91,7 @@ Running the above codes requires:
   - Matplotlib 
   - NumPy 
   - PyTorch
-  - Tensorflow
+  - TensorFlow
   - Scikit-learn 
 
 Install the required packages using pip: 
