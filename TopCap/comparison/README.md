@@ -62,7 +62,7 @@ We build 2 state-of-the-art comparison models that leverage mel-frequency cepstr
 
 We bulid a comparative model that utilizes the Short-Time Fourier Transform (STFT) and a Convolutional Neural Network (CNN) for implementation. Based on resizing the spectrograms to two different dimensions (one 8*8 and the other 16*16), the work is divided into two experiments. The model is implemented using TensorFlow and aims to distinguish between two classes (i.e., voiced vs. voiceless consonants) based on STFT features. The model implementation includes a complete pipeline from data loading and STFT feature extraction to model training and evaluation. 
 
-['STFT-CNN.py'](STFT-CNN.py) implements this model as follows.
+['STFT–CNN.py'](STFT–CNN.py) realises this model as follows.
 
 - Data Loading & Dataset Partitioning
   - Loads speech files (.wav format) from a specified directory using 'tf.keras.utils.audio_dataset_from_directory'. 
